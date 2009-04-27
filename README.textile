@@ -9,7 +9,8 @@ A sample of this algorithm implemented with Google Maps can be found at <a href=
 * Please note the algorithm used in the Google Maps' implementation contains a bug that his been fixed in this repository.
             
 h2. Usage
-            
+   
+   <code>      
    // Use Google Maps' point class or any point class with x() and y() methods defined
    var points = [];
    var hullPoints = [];
@@ -38,7 +39,7 @@ h2. Usage
    // Returns: The number of hull points, which may differ the the hull points array's size
    hullPoints_size = chainHull_2D(points, points.length, hullPoints);
    
-
+   </code>
 
 h3. Changes
 
