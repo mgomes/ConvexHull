@@ -11,33 +11,33 @@ A sample of this algorithm implemented with Google Maps can be found at [http://
 h2. Usage
             
 <pre><code>
-  // Use Google Maps' point class or any point class with x() and y() methods defined
-  var points = [];
-  var hullPoints = [];
-  var hullPoints_size;
-  
-  // Add a couple sample points to the array
-  points.push(new GLatLng(37.454299, -122.173925));
-  points.push(new GLatLng(37.4435, -122.108162));
-  points.push(new GLatLng(37.446743, -122.181095));
-  points.push(new GLatLng(37.432331, -122.129714));
-  points.push(new GLatLng(37.425287, -122.178195));
-  points.push(new GLatLng(37.436747, -122.131826));
-  points.push(new GLatLng(37.446781, -122.154234));
-  points.push(new GLatLng(37.456276, -122.136304));
-  points.push(new GLatLng(37.428799, -122.164018));
-  points.push(new GLatLng(37.428198, -122.125469));
-  
-  // Sort the points by X, then by Y (required by the algorithm)
-  points.sort(sortPointY);
-	points.sort(sortPointX);
+   // Use Google Maps' point class or any point class with x() and y() methods defined
+   var points = [];
+   var hullPoints = [];
+   var hullPoints_size;
+
+   // Add a couple sample points to the array
+   points.push(new GLatLng(37.454299, -122.173925));
+   points.push(new GLatLng(37.4435, -122.108162));
+   points.push(new GLatLng(37.446743, -122.181095));
+   points.push(new GLatLng(37.432331, -122.129714));
+   points.push(new GLatLng(37.425287, -122.178195));
+   points.push(new GLatLng(37.436747, -122.131826));
+   points.push(new GLatLng(37.446781, -122.154234));
+   points.push(new GLatLng(37.456276, -122.136304));
+   points.push(new GLatLng(37.428799, -122.164018));
+   points.push(new GLatLng(37.428198, -122.125469));
+
+   // Sort the points by X, then by Y (required by the algorithm)
+   points.sort(sortPointY);
+   points.sort(sortPointX);
 	
-	// Calculate the convex hull
-	// Takes: an (1) array of points with x() and y() methods defined
-	//          (2) Size of the points array
-	//          (3) Empty array to store the hull points
-	// Returns: The number of hull points, which may differ the the hull points array's size
-	hullPoints_size = chainHull_2D(points, points.length, hullPoints);
+   // Calculate the convex hull
+   // Takes: an (1) array of points with x() and y() methods defined
+   //          (2) Size of the points array
+   //          (3) Empty array to store the hull points
+   // Returns: The number of hull points, which may differ the the hull points array's size
+   hullPoints_size = chainHull_2D(points, points.length, hullPoints);
 </code></pre>
 
 h3. Changes
