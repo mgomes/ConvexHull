@@ -2,9 +2,9 @@
 
 Javascript implementation of Andrew's Monotone Chain algorithm for calculating a 2D convex hull. This can work directly with the Google Maps API's GPoints.
 
-The algorithm is described and a C++ implementation can be found at <a href="http://softsurfer.com/Archive/algorithm_0109/algorithm_0109.htm#Monotone%20Chain">http://softsurfer.com/Archive/algorithm_0109/algorithm_0109.htm#Monotone%20Chain</a>
+The algorithm is described and a C++ implementation can be found at here[link:http://softsurfer.com/Archive/algorithm_0109/algorithm_0109.htm#Monotone%20Chain].
 
-A sample of this algorithm implemented with Google Maps can be found at <a href="http://www.geocodezip.com/map-markers_ConvexHull_Polygon.asp">http://www.geocodezip.com/map-markers_ConvexHull_Polygon.asp</a>
+A sample of this algorithm implemented with Google Maps can be found here[link:http://www.geocodezip.com/map-markers_ConvexHull_Polygon.asp].
 
 * Please note the algorithm used in the Google Maps' implementation contains a bug that his been fixed in this repository.
             
