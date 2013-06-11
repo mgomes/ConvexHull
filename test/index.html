@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+    <script src="../convex_hull.js"></script>
+    <!-- PLEASE CHANGE THE API KEY FOR YOUR OWN!-->
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTF3QrWccFc7T9kLSwN8F37yNduMO3HgE&sensor=false">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(37.44, -122.17),
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        // Use Google Maps' point class or any point class with x() and y() methods defined
+        var points = [];
+        var hullPoints = [];
+        var hullPoints_size;
+
+        // Add a couple sample points to the array
+        points.push(new google.maps.LatLng(37.428198, -122.125469));
+        points.push(new google.maps.LatLng(37.4410133137382, -122.22770690917969));
+        points.push(new google.maps.LatLng(37.416476077236666, -122.21843719482422));
+        points.push(new google.maps.LatLng(37.435288677925264, -122.21843719482422));
+        points.push(new google.maps.LatLng(37.44271219126219, -122.17749569427212));
+        points.push(new google.maps.LatLng(37.423838092635386, -122.17723846435547));
+        points.push(new google.maps.LatLng(37.4409458245313, -122.15996630403282));
+        points.push(new google.maps.LatLng(37.44294978011441, -122.15745898334171));
+        points.push(new google.maps.LatLng(37.435424832441036, -122.13839386435819));
+        points.push(new google.maps.LatLng(37.460175339573226, -122.12433105947764));
+        
+        markers = []
+        for(ii = 0; ii < points.length; ii++) {
+          markers.push(new google.maps.Marker({position:points[ii],
+          map:map,
+          title: points[ii].toString()}));
+        }
+
+        // Sort the points by X, then by Y (required by the algorithm)
+        points.sort(sortPointX);
+        points.sort(sortPointY);
+
+        // Calculate the convex hull
+        // Takes: an (1) array of points with x() and y() methods defined
+        //          (2) Size of the points array
+        //          (3) Empty array to store the hull points
+        // Returns: The number of hull points, which may differ the the hull points array's size
+        hullPoints_size = chainHull_2D(points, points.length, hullPoints);
+        polyline = new google.maps.Polygon({
+          map: map,
+          paths:hullPoints, 
+          fillColor:"#FF0000",
+          strokeWidth:2, 
+          fillOpacity:0.5, 
+          strokeColor:"#0000FF",
+          strokeOpacity:0.5
+        });
+        for(ii = 0; ii < hullPoints.length; ii++) {
+          console.log(hullPoints[ii].toString());
+        }
+        console.log("Size: %d (%d)", hullPoints.length, hullPoints_size);
+
+        // Remove last element of hullPoints
+        if(hullPoints.length != hullPoints_size) {
+          hullPoints = hullPoints.slice(0, hullPoints_size);
+        }
+
+        polyline2 = new google.maps.Polygon({
+          map: map,
+          paths:hullPoints, 
+          fillColor:"#0000FF",
+          strokeWidth:2, 
+          fillOpacity:0.5, 
+          strokeColor:"#0000FF",
+          strokeOpacity:0.5
+        });
+   
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+   <script type="text/javascript">  
+   </script>
+  </head>
+  <body>
+    <div id="map-canvas"/>
+  </body>
+</html>
