@@ -29,8 +29,8 @@ h2. Usage
    points.push(new google.maps.LatLng(37.428198, -122.125469));
 
    // Sort the points by X, then by Y (required by the algorithm)
-   points.sort(sortPointY);
    points.sort(sortPointX);
+   points.sort(sortPointY);
 
    // Calculate the convex hull
    // Takes: an (1) array of points with x() and y() methods defined
